@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>富88註冊有禮</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --fu88-header-bg: #fdf5e6;
+            --fu88-gold: #cfaa71;
+            --fu88-gold-dark: #b88a44;
+            --fu88-text: #5c4315;
+        }
+
+        body {
+            background-color: #FFF !important;
+            font-family: "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* 頁首 */
+        .fu88-header {
+            background: linear-gradient(90deg, #fdf5e6, #fff, #fdf5e6);
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            min-height: 60px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-logo {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        .fake-login-group {
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .btn-login {
+            background: linear-gradient(180deg, #e8c68c, #cfaa71);
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            border-radius: 20px;
+            box-shadow: 0 2px 4px rgba(207, 170, 113, 0.4);
+        }
+        
+        .btn-register {
+            background: transparent;
+            color: var(--fu88-gold-dark);
+            border: 1px solid var(--fu88-gold);
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .main-container {
+            max-width: 500px;
+            margin: 10px auto;
+            background: transparent;
+            text-align: center;
+        }
+
+        .hero-img-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none !important;
+        }
+
+        .cta-btn {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, #F6D365, #FDA085);
+            color: #8c3a00;
+            padding: 16px 0;
+            width: 90%;
+            max-width: 350px;
+            font-size: 1.4rem;
+            border-radius: 50px;
+            text-decoration: none !important;
+            display: inline-block;
+            font-weight: 900;
+            border: 2px solid #fff;
+            box-shadow: 0 4px 15px rgba(253, 160, 133, 0.5);
+            cursor: pointer;
+        }
+
+        .cta-btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: rotate(30deg);
+            transition: none;
+            animation: sweep 2.5s infinite;
+        }
+
+        @keyframes sweep {
+            0% { left: -60%; }
+            30% { left: 120%; }
+            100% { left: 120%; }
+        }
+
+        .text-content {
+            color: var(--fu88-text);
+            padding: 0 20px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 380px) {
+            .header-logo { height: 30px; }
+            .btn-login, .btn-register { padding: 4px 10px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fu88-header d-flex justify-content-between align-items-center">
+        <img id="js-logo" src="" alt="LOGO" class="header-logo js-all-link">
+        
+        <div class="fake-login-group js-all-link">
+            <button class="btn btn-login px-3">登入</button>
+            <button class="btn btn-register px-3">免費註冊</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-container">
+            <div class="hero-img-wrapper js-all-link">
+                <img id="js-main-img" src="" alt="Promo" class="hero-img">
+            </div>
+            
+            <div class="text-content mb-4">
+                <p id="js-desc" class="opacity-75 small"></p>
+            </div>
+
+            <div id="js-btn-text" class="cta-btn js-all-link"></div>
+        </div>
+    </div>
+
+    <script>
+        const CONFIG = {
+            targetUrl: 'https://ry6668.com/ag/metameta/auth/register', // 替換為富88的跳轉網址
+            logoUrl: 'assets/images/1776911461_富.png', // 需替換
+            mainImgUrl: 'assets/images/1776911481_DxZpZiDUdMQJpkDP.png', // 需替換
+            description: '富88即刻救援！最高38888😍',
+            buttonText: '立即領取',
+            pixelEventName: 'CompleteRegistration'
+        };
+
+        document.getElementById('js-logo').src = CONFIG.logoUrl;
+        document.getElementById('js-main-img').src = CONFIG.mainImgUrl;
+        document.getElementById('js-desc').innerText = CONFIG.description;
+        document.getElementById('js-btn-text').innerText = CONFIG.buttonText;
+
+        document.querySelectorAll('.js-all-link').forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (typeof fbq === 'function') { 
+                    fbq('track', CONFIG.pixelEventName); 
+                }
+                window.location.href = CONFIG.targetUrl;
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
